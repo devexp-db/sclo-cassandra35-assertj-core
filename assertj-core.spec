@@ -51,11 +51,11 @@ rm -rf ./src/test/java/org/assertj/core/error/ShouldContainString_create_Test.ja
 
 %files -f .mfiles
 %doc README.md CONTRIBUTING.md
-%license LICENSE.txt 
+%license LICENSE.txt
 
 %files javadoc -f .mfiles-javadoc
 %doc CONTRIBUTING.md
-%license LICENSE.txt 
+%license LICENSE.txt
 
 %changelog
 * Wed Sep 02 2015 Roman Mohr <roman@fenkhuber.at> - 2.2.0-1
