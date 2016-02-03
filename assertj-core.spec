@@ -1,6 +1,6 @@
 Name:           assertj-core
 Version:        2.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Library of assertions similar to fest-assert
 License:        ASL 2.0
 URL:            http://joel-costigliola.github.io/assertj/
@@ -58,5 +58,8 @@ rm -rf ./src/test/java/org/assertj/core/error/ShouldContainString_create_Test.ja
 %license LICENSE.txt
 
 %changelog
+* Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
 * Wed Sep 02 2015 Roman Mohr <roman@fenkhuber.at> - 2.2.0-1
 - Initial packaging
