@@ -1,6 +1,8 @@
+%bcond_without  memoryfilesystem
+
 Name:           assertj-core
 Version:        2.2.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Library of assertions similar to fest-assert
 License:        ASL 2.0
 URL:            http://joel-costigliola.github.io/assertj/
@@ -10,7 +12,9 @@ BuildArch:      noarch
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(cglib:cglib-nodep)
+%if %{with memoryfilesystem}
 BuildRequires:  mvn(com.github.marschall:memoryfilesystem)
+%endif
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.mockito:mockito-core)
 
@@ -43,6 +47,11 @@ This package provides API documentation for %{name}.
 # package org.mockito.internal.util.collections does not exist
 rm -rf ./src/test/java/org/assertj/core/error/ShouldContainString_create_Test.java
 
+%if %{without memoryfilesystem}
+%pom_remove_dep :memoryfilesystem
+rm -r src/test/java/org/assertj/core/internal/{Paths*.java,paths}
+%endif
+
 %build
 %mvn_build -- -Dproject.build.sourceEncoding=UTF-8
 
@@ -58,6 +67,9 @@ rm -rf ./src/test/java/org/assertj/core/error/ShouldContainString_create_Test.ja
 %license LICENSE.txt
 
 %changelog
+* Mon Feb 06 2017 Michael Simacek <msimacek@redhat.com> - 2.2.0-3
+- Add conditional for memoryfilesystem
+
 * Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
